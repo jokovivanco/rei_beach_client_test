@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .menu-text {
+    @apply text-base;
+  }
+
+  .menu-link {
+    @apply text-muted-foreground flex gap-2 items-center;
+  }
+}

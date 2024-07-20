@@ -1,0 +1,118 @@
+import { useEffect, useRef, useCallback } from 'react';
+import { privateAxios } from '@/apis/axios';
+import { Button } from '@/components/ui/button';
+import { CursorPageable } from '@/types/page-types';
+import { ProductAndPopulatedCategoryResponse } from '@/types/product-types';
+import { QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
+import { Fragment } from 'react';
+
+export const Route = createFileRoute('/_authenticated/cashier')({
+  component: Cashier,
+});
+
+function Cashier() {
+  const fetchProjects = async ({
+    pageParam,
+  }: QueryFunctionContext): Promise<
+    CursorPageable<ProductAndPopulatedCategoryResponse>
+  > => {
+    console.log(pageParam);
+    const response = await privateAxios.get(
+      `/api/products?size=3&cursor=${pageParam || ''}`
+    );
+    return response.data;
+  };
+
+  const {
+    data,
+    error,
+    fetchNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteQuery({
+    queryKey: ['products'],
+    queryFn: fetchProjects,
+    initialPageParam: null,
+    getNextPageParam: (lastPage) => lastPage.paging.cursor,
+  });
+
+  const hasMore = data?.pages?.[data.pages.length - 1]?.paging.hasMore;
+  const loadMoreRef = useRef<HTMLDivElement>(null);
+
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const target = entries[0];
+      if (target.isIntersecting && hasMore && !isFetchingNextPage) {
+        fetchNextPage();
+      }
+    },
+    [hasMore, fetchNextPage, isFetchingNextPage]
+  );
+
+  useEffect(() => {
+    const option = {
+      root: null,
+      rootMargin: '20px',
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, option);
+
+    if (loadMoreRef.current) observer.observe(loadMoreRef.current);
+
+    return () => {
+      if (loadMoreRef.current) observer.unobserve(loadMoreRef.current);
+    };
+  }, [handleObserver]);
+
+  return status === 'pending' ? (
+    <p>Loading...</p>
+  ) : status === 'error' ? (
+    <p>Error: {error.message}</p>
+  ) : (
+    <div className="h-full flex">
+      <div className="w-full bg-slate-400 py-6 px-4">
+        {data?.pages?.map((group, groupIndex) => (
+          <Fragment key={groupIndex}>
+            {group.data.map((product, productIndex) => (
+              <div
+                className="flex flex-wrap justify-between p-2 bg-green-400 w-full"
+                key={product.id}
+              >
+                <div className="flex flex-wrap justify-between p-2 bg-green-400 w-full">
+                  <div className="flex items-center gap-2 cont">
+                    <div className="min-w-16 min-h-16 bg-secondary" />
+                    <div>
+                      <p className="font-medium">{product.name}</p>
+                      <p className="text-sm">
+                        Tersedia:{' '}
+                        {product.availability ? 'Tersedia' : 'Tidak Tersedia'}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <p className="font-medium">Rp. {product.price}</p>
+                    <Button className="rounded-sm">Tambah</Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Fragment>
+        ))}
+        <div ref={loadMoreRef}>
+          {isFetchingNextPage ? (
+            <p>Loading more...</p>
+          ) : hasMore ? (
+            <p>Loading more...</p>
+          ) : (
+            <p>Nothing more to load</p>
+          )}
+        </div>
+        <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
+      </div>
+      <div className="w-full bg-orange-300">tes2</div>
+    </div>
+  );
+}
