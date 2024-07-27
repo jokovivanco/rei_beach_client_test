@@ -11,7 +11,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="relative">
+    <div className="relative bg-slate-950">
       <div
         className={cn(
           'flex absolute top-0 px-2 pt-1 transition-all duration-300',
@@ -20,12 +20,12 @@ const Sidebar = () => {
       >
         {hiddenSidebar ? (
           <ChevronLast
-            className="text-muted-foreground cursor-pointer"
+            className="text-muted-foreground cursor-pointer hidden md:block"
             onClick={toggleSidebar}
           />
         ) : (
           <ChevronFirst
-            className="text-muted-foreground cursor-pointer"
+            className="text-muted-foreground cursor-pointer hidden md:block"
             onClick={toggleSidebar}
           />
         )}

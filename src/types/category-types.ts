@@ -12,8 +12,8 @@ export type CategoryResponse = {
   updated_at: Date;
 };
 
-export type CategoryAndPopulatedItemsResponse = CategoryResponse & {
-  _count: { items: number };
+export type CategoryAndPopulatedProductsResponse = CategoryResponse & {
+  _count: { products: number };
 };
 
 export type CreateCategoryRequest = {
@@ -22,8 +22,8 @@ export type CreateCategoryRequest = {
 
 export type SearchCategoryRequest = {
   name?: string;
-  page?: number;
-  size?: number;
+  size: number;
+  cursor?: number;
 };
 
 export type UpdateCategoryRequest = {

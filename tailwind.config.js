@@ -20,7 +20,6 @@ export default {
         poppins: ['Roboto', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        navigationBackground: '#333333',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

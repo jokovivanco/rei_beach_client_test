@@ -13,7 +13,7 @@ import {
   listCategoryQueryOption,
   listItemQueryOption,
   searchInboundQueryOption,
-} from '@/query/queryOptions';
+} from '@/lib/query/queryOptions';
 import { SearchInboundRequest } from '@/types/inbound-types';
 import { DropdownMenuSeparator } from '@radix-ui/react-dropdown-menu';
 import { useQueryClient } from '@tanstack/react-query';

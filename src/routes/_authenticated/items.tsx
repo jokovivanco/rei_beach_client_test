@@ -14,7 +14,7 @@ import {
   getLastItemQueryOption,
   listCategoryQueryOption,
   searchItemQueryOption,
-} from '@/query/queryOptions';
+} from '@/lib/query/queryOptions';
 import { SearchItemRequest } from '@/types/item-types';
 import { useQueryClient } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';

@@ -2,7 +2,7 @@ import {
   getLastItemQueryOption,
   listItemQueryOption,
   searchItemQueryOption,
-} from '@/query/queryOptions';
+} from '@/lib/query/queryOptions';
 import { SearchItemRequest } from '@/types/item-types';
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 

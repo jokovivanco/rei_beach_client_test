@@ -3,7 +3,7 @@ import { sidebarMenu } from '@/constants/sidebar-menu';
 
 const SidebarMenu = ({ hideText }: { hideText: boolean }) => {
   return (
-    <ul className="space-y-4">
+    <ul className="space-y-6">
       {sidebarMenu.map((menu) => (
         <li key={menu.name}>
           <MenuLink

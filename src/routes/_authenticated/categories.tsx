@@ -8,7 +8,7 @@ import Pagination from '@/components/Pagination';
 import Search from '@/components/Search';
 import SelectSize from '@/components/SelectSize';
 import { useCategoryQuery } from '@/hooks/queries/categoryQuery';
-import { searchCategoryQueryOption } from '@/query/queryOptions';
+import { searchCategoryQueryOption } from '@/lib/query/queryOptions';
 import { SearchCategoryRequest } from '@/types/category-types';
 import { DropdownMenuSeparator } from '@radix-ui/react-dropdown-menu';
 import { useQueryClient } from '@tanstack/react-query';

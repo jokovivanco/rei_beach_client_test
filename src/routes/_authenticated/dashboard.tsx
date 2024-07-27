@@ -10,7 +10,7 @@ import {
   countUserCategoryAndItemQueryOption,
   listInboundQueryOption,
   listOutboundQueryOption,
-} from '@/query/queryOptions';
+} from '@/lib/query/queryOptions';
 import { useQueryClient } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';

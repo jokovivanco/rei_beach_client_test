@@ -2,7 +2,7 @@ import {
   getLastCategoryQueryOption,
   listCategoryQueryOption,
   searchCategoryQueryOption,
-} from '@/query/queryOptions';
+} from '@/lib/query/queryOptions';
 import { SearchCategoryRequest } from '@/types/category-types';
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 

@@ -1,4 +1,4 @@
-import { countUserCategoryAndItemQueryOption } from '@/query/queryOptions';
+import { countUserCategoryAndItemQueryOption } from '@/lib/query/queryOptions';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 export const useSummaryDataCountQuery = () =>

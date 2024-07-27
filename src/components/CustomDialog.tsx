@@ -37,7 +37,7 @@ const CustomDialog = ({
       <DialogTrigger asChild>
         <Button
           disabled={disabled}
-          className={`flex gap-1 items-center ${bgColor} hover:${bgColorHover}`}
+          className={`flex gap-1 items-center ${bgColor} ${bgColorHover ? `hover:${bgColorHover}` : ''}`}
         >
           {buttonIcon}
           <span>{buttonText}</span>

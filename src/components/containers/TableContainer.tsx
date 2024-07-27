@@ -1,8 +1,18 @@
-import { ReactChildren } from '@/types';
+import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
 
-const TableContainer = ({ children }: ReactChildren) => {
+const TableContainer = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) => {
   return (
-    <div className="w-full p-4 rounded-lg shadow-sm bg-card">{children}</div>
+    <div className={cn('w-full p-4 rounded-lg shadow-sm bg-card', className)}>
+      {children}
+    </div>
   );
 };
+
 export default TableContainer;

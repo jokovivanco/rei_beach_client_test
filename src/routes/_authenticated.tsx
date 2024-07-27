@@ -1,11 +1,11 @@
 import { privateAxios } from '@/apis/axios';
 import Header from '@/components/layouts/Header';
 import Sidebar from '@/components/layouts/Sidebar';
-import { cn } from '@/lib/utils';
-import { refreshQueryOption } from '@/query/queryOptions';
+import { refreshQueryOption } from '@/lib/query/queryOptions';
 import userService from '@/services/userService';
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 import { AxiosError, InternalAxiosRequestConfig } from 'axios';
+import { createContext, useRef } from 'react';
 
 type AxiosErrorConfig = InternalAxiosRequestConfig & {
   _retry?: boolean;
@@ -45,15 +45,11 @@ export const Route = createFileRoute('/_authenticated')({
 function AuthenticatedRoot() {
   return (
     <>
-      <div className="h-screen flex flex-col relative">
+      <div className="h-screen flex flex-col">
         <Header />
-        <div className="flex-1 flex overflow-hidden">
+        <div className="h-full flex">
           <Sidebar />
-          <div
-            className={cn(
-              'bg-sky-500 flex-1 overflow-auto transition-all duration-300 ease-in ',
-            )}
-          >
+          <div className="w-full transition-all duration-300 ease-in overflow-x-hidden">
             <Outlet />
           </div>
         </div>

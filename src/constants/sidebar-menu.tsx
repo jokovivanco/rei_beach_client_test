@@ -1,34 +1,51 @@
-import { BoxIcon, LayersIcon } from 'lucide-react';
+import {
+  BoxIcon,
+  Home,
+  ClipboardList,
+  Calculator,
+  Package,
+  CalendarDays,
+  Archive,
+  Inbox,
+  ContactRound,
+  CircleUserRound,
+  Settings,
+} from 'lucide-react';
 
 export const sidebarMenu = [
   {
     name: 'Dashboard',
-    iconElement: <LayersIcon />,
+    iconElement: <Home />,
     to: '/dashboard',
   },
   {
     name: 'Order',
-    iconElement: <BoxIcon />,
+    iconElement: <ClipboardList />,
     to: '/order',
   },
   {
     name: 'Cashier',
-    iconElement: <BoxIcon />,
+    iconElement: <Calculator />,
     to: '/cashier',
   },
   {
+    name: 'Product',
+    iconElement: <Package />,
+    to: '/product',
+  },
+  {
     name: 'Reservation',
-    iconElement: <BoxIcon />,
+    iconElement: <CalendarDays />,
     to: '/reservation',
   },
   {
     name: 'Inventory',
-    iconElement: <BoxIcon />,
+    iconElement: <Archive />,
     to: '/inventory',
   },
   {
     name: 'Purchase',
-    iconElement: <BoxIcon />,
+    iconElement: <Inbox />,
     to: '/purchase',
   },
   {
@@ -38,12 +55,17 @@ export const sidebarMenu = [
   },
   {
     name: 'User Manager',
-    iconElement: <BoxIcon />,
+    iconElement: <ContactRound />,
     to: 'user-manager',
   },
   {
     name: 'Account',
-    iconElement: <BoxIcon />,
+    iconElement: <CircleUserRound />,
     to: '/account',
+  },
+  {
+    name: 'Settings',
+    iconElement: <Settings />,
+    to: '/settings',
   },
 ];

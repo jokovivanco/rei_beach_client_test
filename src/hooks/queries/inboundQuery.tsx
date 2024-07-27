@@ -2,7 +2,7 @@ import {
   getLastInboundQueryOption,
   listInboundQueryOption,
   searchInboundQueryOption,
-} from '@/query/queryOptions';
+} from '@/lib/query/queryOptions';
 import { SearchInboundRequest } from '@/types/inbound-types';
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 

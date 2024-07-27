@@ -21,7 +21,7 @@ const userService = {
   },
   refresh: async (): Promise<RefreshResponse> => {
     const response = await publicAxios.get('/api/users/refresh');
-    localStorage.setItem('token', response.data.access_token);
+    // localStorage.setItem('token', response.data.access_token);
     return response.data;
   },
   count: async (): Promise<WithData<number>> => {
